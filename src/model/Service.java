@@ -1,7 +1,8 @@
 package model;
 
 /**
- Represents a campus service that maintains its own virtual queue
+ * Represents a campus service that maintains its own virtual queue
+ * (e.g. Library Desk, Canteen Counter, Registrar Office).
  */
 public class Service {
     private final String serviceId;
@@ -39,7 +40,7 @@ public class Service {
         return name + " [" + department + "]";
     }
 
-    /** Services are identified purely by their serviceId, regardless of which fields have since changed. */
+    /** equals by serviceId only */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

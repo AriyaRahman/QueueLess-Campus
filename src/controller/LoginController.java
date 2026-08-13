@@ -8,7 +8,8 @@ import storage.*;
 import java.util.Optional;
 
 /**
- Mediates between LoginFrame and the AuthenticationManager.
+ * Handles login and creates the repository/service objects that get
+ * passed to StudentController / AdminController after login.
  */
 public class LoginController {
 
