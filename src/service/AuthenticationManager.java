@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- * Authenticates students and staff, and handles new student self-registration.
+ * Authenticates students and staff, and handles new student registration.
  */
 public class AuthenticationManager {
 

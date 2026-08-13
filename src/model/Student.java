@@ -34,7 +34,7 @@ public class Student {
         return name + " (" + studentId + ")";
     }
 
-    /** Students are identified purely by their studentId, regardless of which fields have since changed. */
+    /** equals by studentId only */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

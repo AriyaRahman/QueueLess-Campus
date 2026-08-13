@@ -34,7 +34,7 @@ public class Staff {
         return name + " (" + staffId + ")";
     }
 
-    /** Staff are identified purely by their staffId, regardless of which fields have since changed. */
+    /** equals by staffId only */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

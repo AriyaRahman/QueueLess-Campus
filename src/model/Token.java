@@ -46,7 +46,7 @@ public class Token {
         return "#" + tokenNumber + " (" + status + ")";
     }
 
-    /** Tokens are identified purely by their tokenId, regardless of which fields have since changed. */
+    /** equals by tokenId only */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
