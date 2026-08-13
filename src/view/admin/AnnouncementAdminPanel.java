@@ -24,6 +24,9 @@ public class AnnouncementAdminPanel extends JPanel {
 
     public AnnouncementAdminPanel(AdminController controller) {
         this.controller = controller;
+        ThemeUtil.styleInput(titleField);
+        ThemeUtil.styleInput(messageArea);
+        ThemeUtil.styleInput(historyArea);
         setLayout(new BorderLayout(10, 10));
         setBorder(new EmptyBorder(15, 15, 15, 15));
         setBackground(ThemeUtil.BACKGROUND);

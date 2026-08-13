@@ -39,7 +39,7 @@ public class ServiceManagementPanel extends JPanel {
         JPanel bottom = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         bottom.setBackground(ThemeUtil.BACKGROUND);
         JButton refreshButton = ThemeUtil.createSecondaryButton("Refresh");
-        JButton toggleButton = ThemeUtil.createSecondaryButton("Toggle Active");
+        JButton toggleButton = ThemeUtil.createAccentButton("Toggle Active");
         JButton addButton = ThemeUtil.createPrimaryButton("Add Service");
         refreshButton.addActionListener(e -> refresh());
         toggleButton.addActionListener(e -> handleToggle());
@@ -78,6 +78,9 @@ public class ServiceManagementPanel extends JPanel {
         JTextField nameField = new JTextField();
         JTextField deptField = new JTextField();
         JTextField timeField = new JTextField();
+        ThemeUtil.styleInput(nameField);
+        ThemeUtil.styleInput(deptField);
+        ThemeUtil.styleInput(timeField);
 
         Object[] fields = {
                 "Service name:", nameField,

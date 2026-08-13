@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- Coordinates all admin/staff-facing actions
+ * Coordinates all admin/staff-facing actions: monitoring and driving queues,
+ * managing services, generating reports and posting announcements.
  */
 public class AdminController {
 
