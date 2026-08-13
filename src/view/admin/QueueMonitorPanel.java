@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Lets staff pick a service, see who is waiting, and call/complete students
- * one at a time - the digital equivalent of a "next please" counter.
+ * Lets staff pick a service, see who is waiting, and call/complete
+ * students one at a time.
  */
 public class QueueMonitorPanel extends JPanel {
 
@@ -28,6 +28,7 @@ public class QueueMonitorPanel extends JPanel {
 
     public QueueMonitorPanel(AdminController controller) {
         this.controller = controller;
+        ThemeUtil.styleInput(serviceCombo);
         setLayout(new BorderLayout(10, 10));
         setBorder(new EmptyBorder(15, 15, 15, 15));
         setBackground(ThemeUtil.BACKGROUND);
@@ -57,7 +58,7 @@ public class QueueMonitorPanel extends JPanel {
         actions.setBackground(ThemeUtil.BACKGROUND);
         JButton refreshButton = ThemeUtil.createSecondaryButton("Refresh");
         JButton callNextButton = ThemeUtil.createPrimaryButton("Call Next");
-        JButton completeButton = ThemeUtil.createPrimaryButton("Complete Current");
+        JButton completeButton = ThemeUtil.createSuccessButton("Complete Current");
         refreshButton.addActionListener(e -> refreshQueue());
         callNextButton.addActionListener(e -> handleCallNext());
         completeButton.addActionListener(e -> handleComplete());

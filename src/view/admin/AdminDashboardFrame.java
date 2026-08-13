@@ -6,7 +6,6 @@ import util.ThemeUtil;
 import view.LoginFrame;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**
@@ -36,10 +35,17 @@ public class AdminDashboardFrame extends JFrame {
 
         JTabbedPane tabs = new JTabbedPane();
         tabs.setFont(ThemeUtil.FONT_SUBTITLE.deriveFont(13f));
-        tabs.addTab("Queue Monitor", queueMonitorPanel);
-        tabs.addTab("Manage Services", serviceManagementPanel);
-        tabs.addTab("Reports", reportPanel);
-        tabs.addTab("Announcements", announcementAdminPanel);
+        tabs.setBackground(ThemeUtil.BACKGROUND);
+        tabs.setForeground(ThemeUtil.TEXT_PRIMARY);
+        tabs.setBorder(BorderFactory.createEmptyBorder(4, 6, 0, 6));
+        tabs.addTab("Queue Monitor", ThemeUtil.icon("queue", ThemeUtil.PRIMARY), queueMonitorPanel);
+        tabs.addTab("Manage Services", ThemeUtil.icon("service", ThemeUtil.PRIMARY), serviceManagementPanel);
+        tabs.addTab("Reports", ThemeUtil.icon("report", ThemeUtil.PRIMARY), reportPanel);
+        tabs.addTab("Announcements", ThemeUtil.icon("announcement", ThemeUtil.PRIMARY), announcementAdminPanel);
+        tabs.setBackgroundAt(0, ThemeUtil.PRIMARY_LIGHT);
+        tabs.setBackgroundAt(1, ThemeUtil.SKY_LIGHT);
+        tabs.setBackgroundAt(2, ThemeUtil.PURPLE_LIGHT);
+        tabs.setBackgroundAt(3, ThemeUtil.WARNING_LIGHT);
 
         tabs.addChangeListener(e -> {
             queueMonitorPanel.reloadServices();
@@ -50,17 +56,9 @@ public class AdminDashboardFrame extends JFrame {
     }
 
     private JPanel buildHeader() {
-        JPanel header = new JPanel(new BorderLayout());
-        header.setBackground(ThemeUtil.PRIMARY_DARK);
-        header.setBorder(new EmptyBorder(12, 20, 12, 20));
+        JPanel header = ThemeUtil.createHeaderPanel("Staff Portal - " + controller.getStaff().getName());
 
-        JLabel welcome = new JLabel("Staff Portal - " + controller.getStaff().getName());
-        welcome.setFont(ThemeUtil.FONT_SUBTITLE);
-        welcome.setForeground(Color.WHITE);
-        header.add(welcome, BorderLayout.WEST);
-
-        JButton logoutButton = new JButton("Logout");
-        logoutButton.setFocusPainted(false);
+        JButton logoutButton = ThemeUtil.createDangerButton("Logout");
         logoutButton.addActionListener(e -> {
             dispose();
             new LoginFrame().setVisible(true);

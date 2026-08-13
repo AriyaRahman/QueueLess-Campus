@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Builds summary statistics per service 
+ * Builds summary statistics per service (tokens issued, completed, cancelled,
+ * average wait time) and can export them as a CSV report for record keeping.
  */
 public class ReportManager {
 

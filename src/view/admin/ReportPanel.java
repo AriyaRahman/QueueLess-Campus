@@ -35,7 +35,7 @@ public class ReportPanel extends JPanel {
         JPanel bottom = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         bottom.setBackground(ThemeUtil.BACKGROUND);
         JButton refreshButton = ThemeUtil.createSecondaryButton("Refresh");
-        JButton exportButton = ThemeUtil.createPrimaryButton("Export CSV");
+        JButton exportButton = ThemeUtil.createAccentButton("Export CSV");
         refreshButton.addActionListener(e -> refresh());
         exportButton.addActionListener(e -> handleExport());
         bottom.add(refreshButton);
