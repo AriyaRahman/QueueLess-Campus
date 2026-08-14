@@ -9,7 +9,9 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 /**
- * Owns the live, in-memory queue for every service
+ * Keeps the in-memory queue for every service (Map of serviceId -> Queue of Token)
+ * in sync with the CSV-backed TokenRepository. Uses a Queue so tokens are served
+ * in first-come first-served order.
  */
 public class QueueManager {
 
@@ -39,9 +41,7 @@ public class QueueManager {
 
     /** Issues a new token for the student at the end of the given service's queue. */
     public Token joinQueue(String studentId, String serviceId) {
-        // Force the lazy load BEFORE writing to disk. Otherwise, on a service's very
-        // first join, getQueue() would re-read the just-written token from CSV and
-        // the explicit add() below would insert it a second time.
+        // load queue first, otherwise the token could get added twice on first join
         Queue<Token> queue = getQueue(serviceId);
 
         int nextNumber = nextTokenNumberForToday(serviceId);
@@ -98,9 +98,7 @@ public class QueueManager {
             return false;
         }
         Token token = tokenOpt.get();
-        // Remove by ID, not by object equality: the token instance returned by the
-        // repository is freshly deserialized and is not the same object reference
-        // sitting in the live in-memory queue.
+        // compare by ID, not object equality, since repository returns a new object
         getQueue(token.getServiceId()).removeIf(t -> t.getTokenId().equals(tokenId));
         token.setStatus(TokenStatus.CANCELLED);
         tokenRepository.update(token);

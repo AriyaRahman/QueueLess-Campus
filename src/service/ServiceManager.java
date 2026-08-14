@@ -10,6 +10,7 @@ import java.util.UUID;
 
 /**
  * Business logic for creating and maintaining the list of campus services
+ * (canteen, library, office counters, etc.) that students can queue for.
  */
 public class ServiceManager {
 
