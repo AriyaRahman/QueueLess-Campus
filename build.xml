@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See commented blocks below for
+more information on what is possible in this configuration file. -->
+<project name="QueueLess-Campus" default="default" basedir=".">
+    <description>Builds, tests, and runs the project QueueLess-Campus.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <!--
+
+    There exist several targets which are by default empty and which can be
+    used for execution of your tasks. These targets are usually executed
+    before and after some main targets. They are:
+
+      -pre-init:                 called before initialization of project properties
+      -post-init:                called after initialization of project properties
+      -pre-compile:               called before javac compilation
+      -post-compile:              called after javac compilation
+      -pre-compile-single:        called before javac compilation of single class
+      -post-compile-single:       called after javac compilation of single class
+      -pre-compile-test:          called before javac compilation of JUnit tests
+      -post-compile-test:         called after javac compilation of JUnit tests
+      -pre-compile-test-single:   called before javac compilation of a single JUnit test
+      -post-compile-test-single:  called after javac compilation of a single JUnit test
+      -pre-jar:                  called before JAR building
+      -post-jar:                 called after JAR building
+      -post-clean:                called after cleaning build products
+      -pre-run-deploy:            called before deployment of the project's JAR to the runtime IDE
+      -pre-run-single-deploy:     called before deployment of a single class's JAR to the runtime IDE
+
+    Example of pluging an obfuscator after the compilation could look like
+
+        <target name="-post-compile">
+            <obfuscate>
+                <fileset dir="${build.classes.dir}"/>
+            </obfuscate>
+        </target>
+
+    For list of available properties check the imported
+    nbproject/build-impl.xml file.
+
+
+    Another way to customize the build is by overriding existing main targets.
+    The targets of interest are:
+
+      -init-macrodef-javac:     defines macro for javac compilation
+      -init-macrodef-junit:     defines macro for junit execution
+      -init-macrodef-debug:     defines macro for class debugging
+      -init-macrodef-java:      defines macro for class execution
+      -do-jar:                  JAR building
+      run:                      execution of project
+      -javadoc-build:           javadoc generation
+      test-report:              JUnit report generation
+
+    An example of overriding the target for project execution could look like
+
+        <target name="run" depends="QueueLess-Campus-impl.jar">
+            <exec dir="bin" executable="launcher.exe">
+                <arg file="${dist.jar}"/>
+            </exec>
+        </target>
+
+    Notice that the overridden target depends on the jar target and not
+    on the compile target as the regular run target does. Regular targets
+    always depend on jar (except of the jar target itself) since they call
+    the jar target to ensure the whole classpath is up-to-date.
+
+
+    -->
+</project>
