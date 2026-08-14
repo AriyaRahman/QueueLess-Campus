@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Holds transient, in-memory notifications for students
+ * Holds in-memory notifications for students (e.g. "your token was called").
+ * Not saved to CSV, only kept for the current session.
  */
 public class NotificationManager {
 
