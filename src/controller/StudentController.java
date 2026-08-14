@@ -13,7 +13,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- * Coordinates all student-facing actions
+ * Handles student actions: browsing services, joining/leaving queues,
+ * checking tokens, reading announcements and leaving feedback.
  */
 public class StudentController {
 
