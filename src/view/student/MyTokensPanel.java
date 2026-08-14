@@ -39,7 +39,7 @@ public class MyTokensPanel extends JPanel {
         JPanel bottom = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         bottom.setBackground(ThemeUtil.BACKGROUND);
         JButton refreshButton = ThemeUtil.createSecondaryButton("Refresh");
-        JButton cancelButton = ThemeUtil.createPrimaryButton("Cancel Token");
+        JButton cancelButton = ThemeUtil.createDangerButton("Cancel Token");
         refreshButton.addActionListener(e -> refresh());
         cancelButton.addActionListener(e -> handleCancel());
         bottom.add(refreshButton);

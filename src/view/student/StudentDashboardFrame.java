@@ -6,7 +6,6 @@ import util.ThemeUtil;
 import view.LoginFrame;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**
@@ -36,10 +35,17 @@ public class StudentDashboardFrame extends JFrame {
 
         JTabbedPane tabs = new JTabbedPane();
         tabs.setFont(ThemeUtil.FONT_SUBTITLE.deriveFont(13f));
-        tabs.addTab("Join Queue", joinQueuePanel);
-        tabs.addTab("My Tokens", myTokensPanel);
-        tabs.addTab("Announcements", announcementsPanel);
-        tabs.addTab("Feedback", feedbackPanel);
+        tabs.setBackground(ThemeUtil.BACKGROUND);
+        tabs.setForeground(ThemeUtil.TEXT_PRIMARY);
+        tabs.setBorder(BorderFactory.createEmptyBorder(4, 6, 0, 6));
+        tabs.addTab("Join Queue", ThemeUtil.icon("queue", ThemeUtil.PRIMARY), joinQueuePanel);
+        tabs.addTab("My Tokens", ThemeUtil.icon("token", ThemeUtil.PRIMARY), myTokensPanel);
+        tabs.addTab("Announcements", ThemeUtil.icon("announcement", ThemeUtil.PRIMARY), announcementsPanel);
+        tabs.addTab("Feedback", ThemeUtil.icon("feedback", ThemeUtil.PRIMARY), feedbackPanel);
+        tabs.setBackgroundAt(0, ThemeUtil.PRIMARY_LIGHT);
+        tabs.setBackgroundAt(1, ThemeUtil.SKY_LIGHT);
+        tabs.setBackgroundAt(2, ThemeUtil.PURPLE_LIGHT);
+        tabs.setBackgroundAt(3, ThemeUtil.SUCCESS_LIGHT);
 
         tabs.addChangeListener(e -> {
             joinQueuePanel.refresh();
@@ -50,17 +56,9 @@ public class StudentDashboardFrame extends JFrame {
     }
 
     private JPanel buildHeader() {
-        JPanel header = new JPanel(new BorderLayout());
-        header.setBackground(ThemeUtil.PRIMARY);
-        header.setBorder(new EmptyBorder(12, 20, 12, 20));
+        JPanel header = ThemeUtil.createHeaderPanel("Welcome, " + controller.getStudent().getName());
 
-        JLabel welcome = new JLabel("Welcome, " + controller.getStudent().getName());
-        welcome.setFont(ThemeUtil.FONT_SUBTITLE);
-        welcome.setForeground(Color.WHITE);
-        header.add(welcome, BorderLayout.WEST);
-
-        JButton logoutButton = new JButton("Logout");
-        logoutButton.setFocusPainted(false);
+        JButton logoutButton = ThemeUtil.createDangerButton("Logout");
         logoutButton.addActionListener(e -> {
             dispose();
             new LoginFrame().setVisible(true);

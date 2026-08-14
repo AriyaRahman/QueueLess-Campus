@@ -23,6 +23,9 @@ public class FeedbackPanel extends JPanel {
 
     public FeedbackPanel(StudentController controller) {
         this.controller = controller;
+        ThemeUtil.styleInput(serviceCombo);
+        ThemeUtil.styleInput(ratingSpinner);
+        ThemeUtil.styleInput(commentArea);
         setLayout(new BorderLayout(10, 10));
         setBorder(new EmptyBorder(15, 15, 15, 15));
         setBackground(ThemeUtil.BACKGROUND);
@@ -36,18 +39,21 @@ public class FeedbackPanel extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         gbc.gridx = 0; gbc.gridy = 0;
-        form.add(new JLabel("Service:"), gbc);
+        JLabel serviceLabel = new JLabel("Service:"); ThemeUtil.styleLabel(serviceLabel, "service");
+        form.add(serviceLabel, gbc);
         gbc.gridx = 1;
         form.add(serviceCombo, gbc);
 
         gbc.gridx = 0; gbc.gridy = 1;
-        form.add(new JLabel("Rating (1-5):"), gbc);
+        JLabel ratingLabel = new JLabel("Rating (1-5):"); ThemeUtil.styleLabel(ratingLabel, "rating");
+        form.add(ratingLabel, gbc);
         gbc.gridx = 1;
         form.add(ratingSpinner, gbc);
 
         gbc.gridx = 0; gbc.gridy = 2;
         gbc.anchor = GridBagConstraints.NORTHWEST;
-        form.add(new JLabel("Comment:"), gbc);
+        JLabel commentLabel = new JLabel("Comment:"); ThemeUtil.styleLabel(commentLabel, "comment");
+        form.add(commentLabel, gbc);
         gbc.gridx = 1;
         commentArea.setLineWrap(true);
         commentArea.setWrapStyleWord(true);
@@ -55,7 +61,7 @@ public class FeedbackPanel extends JPanel {
 
         add(form, BorderLayout.CENTER);
 
-        JButton submitButton = ThemeUtil.createPrimaryButton("Submit Feedback");
+        JButton submitButton = ThemeUtil.createSuccessButton("Submit Feedback");
         submitButton.addActionListener(e -> handleSubmit());
         JPanel bottom = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         bottom.setBackground(ThemeUtil.BACKGROUND);
